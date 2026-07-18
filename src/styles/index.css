@@ -1,0 +1,427 @@
+@import 'tailwindcss';
+
+/* ================================================================
+   ASHIRWAD DIGITALS — Design Tokens
+   Premium Hindu devotional print store.
+   Voice: restrained divine luxury — warm ivory, charcoal ink,
+   soft antique gold. Restraint is the luxury signal.
+
+   NOTE: token *names* (primary/accent/surface) are preserved so the
+   admin area keeps working; their *values* carry the new theme.
+   ================================================================ */
+
+@theme {
+  /* —— Ink (primary actions, headings) — charcoal black —— */
+  --color-primary-50: #f7f5f1;
+  --color-primary-100: #ece8e1;
+  --color-primary-200: #d9d3c8;
+  --color-primary-300: #b8b2a6;
+  --color-primary-400: #8d897f;
+  --color-primary-500: #55534e;
+  --color-primary-600: #2c2c2c;
+  --color-primary-700: #1a1a1a;
+  --color-primary-800: #151515;
+  --color-primary-900: #101010;
+  --color-primary-950: #0a0a0a;
+
+  /* —— Gold (accents, dividers, highlights) — soft antique gold —— */
+  --color-accent-50: #fbf7ef;
+  --color-accent-100: #f5eddd;
+  --color-accent-200: #eadcbc;
+  --color-accent-300: #dcc59a;
+  --color-accent-400: #d2b683;
+  --color-accent-500: #c9a96e;
+  --color-accent-600: #b8944a;
+  --color-accent-700: #97783c;
+  --color-accent-800: #7a612f;
+  --color-accent-900: #5c4923;
+  --color-accent-950: #3d2f16;
+
+  /* —— Surface (backgrounds, borders) — warm whites & stone —— */
+  --color-surface-50: #faf7f2;
+  --color-surface-100: #f4efe7;
+  --color-surface-200: #e9e2d6;
+  --color-surface-300: #d6cdbd;
+  --color-surface-400: #b0ada6;
+  --color-surface-500: #7d7b75;
+  --color-surface-600: #5c5a54;
+  --color-surface-700: #44423d;
+  --color-surface-800: #2c2c2c;
+  --color-surface-900: #1a1a1a;
+  --color-surface-950: #121110;
+
+  /* —— Pure warm white for cards —— */
+  --color-cream: #fffdf9;
+
+  /* —— Functional colors (status feedback — kept muted) —— */
+  --color-success-50: #f2f8f2;
+  --color-success-500: #4d7c58;
+  --color-success-600: #3f6849;
+  --color-success-700: #33543b;
+
+  --color-danger-50: #faf1ef;
+  --color-danger-500: #a4543f;
+  --color-danger-600: #8e4635;
+  --color-danger-700: #74392c;
+
+  --color-warning-50: #fbf7ef;
+  --color-warning-500: #b8944a;
+  --color-warning-600: #97783c;
+
+  --color-info-50: #f1f4f6;
+  --color-info-500: #4f6b7c;
+  --color-info-600: #415a69;
+
+  /* —— Typography —— */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-accent: 'Montserrat', 'Josefin Sans', ui-sans-serif, sans-serif;
+
+  /* —— Type scale (10px – 72px) —— */
+  --text-2xs: 0.625rem;      /* 10px — eyebrows, badges */
+  --text-2xs--line-height: 1.5;
+  --text-display: 4.5rem;    /* 72px — hero display */
+  --text-display--line-height: 1.05;
+  --text-display-sm: 3.25rem;/* 52px */
+  --text-display-sm--line-height: 1.1;
+
+  /* —— Letter-spacing (wide-minimalist luxury voice) —— */
+  --tracking-luxe: 0.18em;
+  --tracking-wider: 0.08em;
+
+  /* —— Shadows (soft, warm-tinted) —— */
+  --shadow-soft: 0 1px 3px 0 rgba(26, 22, 14, 0.05), 0 1px 2px -1px rgba(26, 22, 14, 0.05);
+  --shadow-card: 0 6px 18px -6px rgba(26, 22, 14, 0.09), 0 2px 6px -2px rgba(26, 22, 14, 0.05);
+  --shadow-elevated: 0 18px 40px -12px rgba(26, 22, 14, 0.16), 0 6px 14px -6px rgba(26, 22, 14, 0.07);
+  --shadow-glow: 0 0 24px rgba(201, 169, 110, 0.22);
+
+  /* —— Motion (subtle & slow: 400–700ms, gentle ease) —— */
+  --duration-fast: 200ms;
+  --duration-normal: 400ms;
+  --duration-slow: 700ms;
+  --ease-luxe: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+  /* —— Border radius (4 / 8 / 12 / pill) —— */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-full: 9999px;
+}
+
+/* ================================================================
+   BASE STYLES
+   ================================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-surface-50);
+  color: var(--color-surface-900);
+  line-height: 1.5;
+  transition: background-color var(--duration-normal) var(--ease-luxe),
+    color var(--duration-normal) var(--ease-luxe);
+}
+
+::selection {
+  background-color: var(--color-accent-200);
+  color: var(--color-primary-700);
+}
+
+/* ================================================================
+   REDUCED MOTION — always respected
+   ================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ================================================================
+   DARK MODE (admin area only — customer storefront is always light)
+   ================================================================ */
+
+.dark body,
+.dark {
+  background-color: var(--color-surface-950);
+  color: var(--color-surface-100);
+}
+
+.dark .bg-white {
+  background-color: var(--color-surface-900);
+}
+
+.dark .bg-surface-50 {
+  background-color: var(--color-surface-900);
+}
+
+.dark .border-surface-200 {
+  border-color: var(--color-surface-700);
+}
+
+.dark .text-surface-900 {
+  color: var(--color-surface-100);
+}
+
+.dark .text-surface-600 {
+  color: var(--color-surface-400);
+}
+
+/* ================================================================
+   TYPOGRAPHY HELPERS
+   ================================================================ */
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-accent {
+  font-family: var(--font-accent);
+}
+
+/* Eyebrow label — small caps, wide tracking, gold */
+.eyebrow {
+  font-family: var(--font-accent);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-luxe);
+  text-transform: uppercase;
+  color: var(--color-accent-600);
+}
+
+/* Body copy rhythm */
+.prose-devotional {
+  line-height: 1.5;
+  color: var(--color-surface-600);
+}
+
+/* ================================================================
+   GOLD DETAILS
+   ================================================================ */
+
+/* Thin gold hairline */
+.hairline-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-accent-400), transparent);
+}
+
+.hairline-gold-solid {
+  height: 1px;
+  background-color: var(--color-accent-300);
+}
+
+/* Gold-framed border */
+.border-gold {
+  border: 1px solid var(--color-accent-300);
+}
+
+/* ================================================================
+   GLASSMORPHISM (warm)
+   ================================================================ */
+
+.glass {
+  background: rgba(250, 247, 242, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(201, 169, 110, 0.14);
+}
+
+.dark .glass {
+  background: rgba(18, 17, 16, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ================================================================
+   SKELETON / SHIMMER
+   ================================================================ */
+
+@keyframes skeleton-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.skeleton {
+  animation: skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  background-color: var(--color-surface-200);
+  border-radius: var(--radius-md);
+}
+
+.dark .skeleton {
+  background-color: var(--color-surface-700);
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 253, 249, 0.4), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+.dark .shimmer::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+}
+
+/* ================================================================
+   GRADIENTS
+   ================================================================ */
+
+.gradient-primary {
+  background: linear-gradient(135deg, var(--color-primary-700) 0%, var(--color-primary-900) 100%);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, var(--color-accent-400) 0%, var(--color-accent-600) 100%);
+}
+
+.gradient-hero {
+  background: linear-gradient(160deg, var(--color-primary-950) 0%, var(--color-primary-800) 55%, var(--color-accent-900) 100%);
+}
+
+.gradient-mesh {
+  background:
+    radial-gradient(at 20% 80%, rgba(201, 169, 110, 0.10) 0%, transparent 50%),
+    radial-gradient(at 80% 20%, rgba(201, 169, 110, 0.07) 0%, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(44, 44, 44, 0.04) 0%, transparent 50%);
+}
+
+/* Warm veil over hero imagery */
+.veil-divine {
+  background: linear-gradient(180deg,
+      rgba(16, 14, 10, 0.35) 0%,
+      rgba(16, 14, 10, 0.15) 40%,
+      rgba(16, 14, 10, 0.65) 100%);
+}
+
+/* ================================================================
+   SCROLLBAR
+   ================================================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-surface-300);
+  border-radius: var(--radius-full);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: var(--color-surface-600);
+}
+
+/* ================================================================
+   FOCUS RING — soft gold, always visible for keyboard users
+   ================================================================ */
+
+.focus-ring {
+  outline: none;
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-500);
+  outline-offset: 2px;
+}
+
+/* ================================================================
+   STATUS COLORS (order tracking)
+   ================================================================ */
+
+.status-pending {
+  color: var(--color-warning-600);
+  background-color: var(--color-warning-50);
+}
+
+.status-design_review {
+  color: var(--color-info-600);
+  background-color: var(--color-info-50);
+}
+
+.status-printing {
+  color: var(--color-primary-600);
+  background-color: var(--color-primary-50);
+}
+
+.status-ready {
+  color: var(--color-accent-600);
+  background-color: var(--color-accent-50);
+}
+
+.status-delivered {
+  color: var(--color-success-600);
+  background-color: var(--color-success-50);
+}
+
+.status-cancelled {
+  color: var(--color-danger-600);
+  background-color: var(--color-danger-50);
+}
+
+/* ================================================================
+   PAGE TRANSITION
+   ================================================================ */
+
+.page-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--duration-normal) var(--ease-luxe), transform var(--duration-normal) var(--ease-luxe);
+}
